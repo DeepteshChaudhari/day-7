@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Array Methods</title>
+</head>
+<script>
+    function myFunc(){
+        var xmlHTTP = new XMLHttpRequest();
+        xmlHTTP.open('GET', 'https://restcountries.com/v3.1/all', true);
+    xmlHTTP.send();
+
+    xmlHTTP.onreadystatechange = function(){
+        // console.log(xmlHTTP.responseText); 
+        var jsonData = JSON.parse(xmlHTTP.responseText);
+        // console.log(jsonData);
+        const Population=jsonData.reduce((x,y)=>{
+        return x+y.population;
+        },0)
+        console.log(Population);
+}
+}
+myFunc();
+</script>
+
+<body>
+    <!-- <div id="users"></div> -->
+</body>
+</html>
